@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { InfiniteMovingCards } from "@/components/ui/infinite-moving-cards";
 
 // Expanded pool of quotes from Stoics, Ryan Holiday, Rumi, Simon Sinek, Einstein, Roosevelt, Aristotle, Darwin, C.S. Lewis
@@ -80,7 +80,7 @@ const stoicQuotes = [
   // Albert Einstein
   { quote: "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world.", name: "Albert Einstein", title: "Interview, 1929" },
   { quote: "Life is like riding a bicycle. To keep your balance you must keep moving.", name: "Albert Einstein", title: "Letter to his son Eduard, 1930" },
-  { quote: "Try not to become a man of success, but rather try to become a man of value.", name: "Albert Einstein", title: "Life Magazine, 1955" },
+  { quote: "Try not to become a man of success, but rather to be of value.", name: "Albert Einstein", title: "Life Magazine, 1955" },
   { quote: "I have no special talent. I am only passionately curious.", name: "Albert Einstein", title: "Letter to Carl Seelig, 1952" },
   { quote: "A person who never made a mistake never tried anything new.", name: "Albert Einstein", title: "Various" },
   { quote: "Strive not to be a success, but rather to be of value.", name: "Albert Einstein", title: "Various" },
@@ -140,7 +140,7 @@ const stoicQuotes = [
   // Add more as needed to reach 100+ (this is a representative sample, you can expand further)
 ];
 
-function getRandomQuotes(arr, n) {
+function getRandomQuotes(arr: typeof stoicQuotes, n: number) {
   const result = [];
   const used = new Set();
   while (result.length < n && used.size < arr.length) {

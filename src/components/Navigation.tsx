@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 
@@ -19,7 +19,7 @@ const Navigation = () => {
   }, []);
 
   const toggleTheme = () => {
-    setIsDark((prev) => {
+    setIsDark((prev: boolean) => {
       const next = !prev;
       if (next) {
         document.documentElement.classList.add('dark');

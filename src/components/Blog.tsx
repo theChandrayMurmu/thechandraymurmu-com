@@ -1,5 +1,4 @@
-
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
@@ -132,12 +131,12 @@ const Blog = () => {
 
         {/* Blog Posts */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post) => (
+          {filteredPosts.map((post: any) => (
             <Card key={post.id} className="group hover:shadow-lg transition-all duration-300 border-0 shadow-md">
               <CardContent className="p-6">
                 <div className="mb-4">
                   <div className="flex flex-wrap gap-2 mb-3">
-                    {post.topics.map((topic) => (
+                    {post.topics.map((topic: string) => (
                       <Badge key={topic} variant="secondary" className="bg-gray-100 text-gray-700 text-xs">
                         {topic}
                       </Badge>
