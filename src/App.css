@@ -40,3 +40,35 @@
 .read-the-docs {
   color: #888;
 }
+
+.animated-gradient-text {
+  background: linear-gradient(270deg, #eab308, #ef4444, #3b82f6, #06b6d4, #8b5cf6, #eab308);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: gradientMove 6s ease-in-out infinite;
+  transition: animation 0.3s;
+}
+.animated-gradient-text:hover {
+  animation: gradientMove 2s linear infinite;
+}
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes blink-glow {
+  0%, 100% { box-shadow: 0 0 8px 2px #22c55e, 0 0 16px 4px #22c55e55; opacity: 0.8; }
+  50% { box-shadow: 0 0 16px 8px #22c55e, 0 0 32px 16px #22c55e99; opacity: 1; }
+}
+.animate-blink-glow {
+  animation: blink-glow 1.2s infinite;
+}

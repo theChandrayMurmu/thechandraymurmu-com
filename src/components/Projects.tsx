@@ -5,35 +5,35 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A modern e-commerce solution built with React and Node.js, featuring real-time inventory management and seamless payment integration.",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
-      link: "#"
+      title: "DesignStudio",
+      description: "A collection of resources, tools, and design system kits to up-skill and shape the future of design. Research, learn, test, and implement design systems.",
+      technologies: ["Design Systems", "UI/UX", "Resources", "Guidebooks"],
+      image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=800&h=600&fit=crop",
+      link: "https://github.com/theChandrayMurmu/DesignStudio"
     },
     {
       id: 2,
-      title: "Task Management App",
-      description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      technologies: ["TypeScript", "React", "Firebase", "Tailwind"],
-      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
-      link: "#"
+      title: "ColorPaletteLibrary",
+      description: "A go-to tool for generating and storing color palettes, built as an Android app using Flutter and Material Design.",
+      technologies: ["Flutter", "Android", "Material Design"],
+      image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=800&h=600&fit=crop",
+      link: "https://github.com/theChandrayMurmu/ColorPaletteLibrary"
     },
     {
       id: 3,
-      title: "Analytics Dashboard",
-      description: "A comprehensive analytics dashboard for tracking business metrics with interactive charts and real-time data visualization.",
-      technologies: ["React", "D3.js", "Python", "PostgreSQL"],
-      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
-      link: "#"
+      title: "moonspace.xyz",
+      description: "Building Team — Building Community. A portfolio and community platform to connect, share, and grow together.",
+      technologies: ["Community", "Portfolio", "Newsletter"],
+      image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?w=800&h=600&fit=crop",
+      link: "https://github.com/theChandrayMurmu/moonspace.xyz"
     },
     {
       id: 4,
-      title: "Mobile Banking App",
-      description: "A secure mobile banking application with biometric authentication, transaction history, and budget tracking features.",
-      technologies: ["React Native", "Redux", "Node.js", "AWS"],
-      image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800&h=600&fit=crop",
-      link: "#"
+      title: "DesignStudio",
+      description: "A collection of resources, tools, and design system kits to up-skill and shape the future of design. Research, learn, test, and implement design systems.",
+      technologies: ["Design Systems", "UI/UX", "Resources", "Guidebooks"],
+      image: "https://images.unsplash.com/photo-1464983953574-0892a716854b?w=800&h=600&fit=crop",
+      link: "https://github.com/theChandrayMurmu/DesignStudio"
     }
   ];
 

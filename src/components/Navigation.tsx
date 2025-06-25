@@ -92,6 +92,12 @@ const Navigation = () => {
             >
               Resume
             </a>
+            {/* Search Bar */}
+            <input
+              type="text"
+              placeholder="Search..."
+              className="ml-4 px-3 py-2 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400 text-sm w-48"
+            />
             {/* Dark/Light Mode Toggle */}
             <div className="flex items-center ml-4">
               <Sun className={`mr-1 ${!isDark ? 'text-yellow-500' : 'text-gray-400'}`} size={18} />

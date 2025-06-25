@@ -36,9 +36,71 @@
         body, #message { margin-top: 0; background: white; box-shadow: none; }
         body { border-top: 16px solid #ffa100; }
       }
+      /* Dev strip styles */
+      .dev-strip {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        border-bottom: 1px solid #e1e5e9;
+        padding: 8px 20px;
+        font-size: 13px;
+        color: #6c757d;
+        text-align: center;
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .dev-strip-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .dev-dot {
+        width: 6px;
+        height: 6px;
+        background: #28a745;
+        border-radius: 50%;
+        opacity: 0.8;
+      }
+      .dev-strip-text {
+        font-weight: 400;
+      }
+      .dev-strip-close {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: #6c757d;
+        font-size: 16px;
+        cursor: pointer;
+        opacity: 0.5;
+        transition: opacity 0.2s ease;
+        padding: 4px;
+      }
+      .dev-strip-close:hover {
+        opacity: 1;
+      }
     </style>
   </head>
   <body>
+    <!-- Development Notice Top Strip -->
+    <div class="dev-strip show" id="devStrip">
+      <div class="dev-strip-content">
+        <div class="dev-dot"></div>
+        <span class="dev-strip-text">Site under development — Some features may be updated frequently</span>
+      </div>
+      <button class="dev-strip-close" onclick="hideElement('devStrip')">×</button>
+    </div>
+    <script>
+      function hideElement(id) {
+        document.getElementById(id).classList.remove('show');
+      }
+    </script>
     <div id="message">
       <h2>Welcome</h2>
       <h1>Firebase Hosting Setup Complete</h1>
