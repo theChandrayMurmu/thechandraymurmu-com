@@ -5,6 +5,7 @@ import Support from '@/components/Support';
 import Navigation from '@/components/Navigation';
 import { StickyBanner } from '@/components/ui/sticky-banner';
 import InfiniteMovingCardsDemo from '@/components/ui/infinite-moving-cards-demo';
+import Footer from '@/components/Footer';
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <Projects />
       <Blog />
       <Support />
+      <Footer />
     </div>
   );
 };

@@ -44,16 +44,29 @@ const Navigation = () => {
     <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="text-xl font-bold text-gray-900">Chandray Murmu</div>
+          <div className="flex items-center">
+            <img 
+              src="/logo-cc.png" 
+              alt="Chandray Murmu Logo" 
+              className="h-12 sm:h-16 w-auto object-contain cursor-pointer hover:opacity-80 transition-all duration-200 hover:scale-105"
+              onClick={() => scrollToSection('hero')}
+              onError={(e) => {
+                // Fallback to text if image fails to load
+                e.currentTarget.style.display = 'none';
+                const sibling = e.currentTarget.nextElementSibling as HTMLElement | null;
+                if (sibling) sibling.style.display = 'block';
+              }}
+            />
+            <span 
+              className="text-xl font-bold text-gray-900 cursor-pointer hover:text-gray-700 transition-colors hidden"
+              onClick={() => scrollToSection('hero')}
+            >
+              Chandray Murmu
+            </span>
+          </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8 items-center">
-            <button 
-              onClick={() => scrollToSection('hero')}
-              className="text-gray-600 hover:text-gray-900 transition-colors"
-            >
-              Home
-            </button>
             <button 
               onClick={() => scrollToSection('projects')}
               className="text-gray-600 hover:text-gray-900 transition-colors"
@@ -101,12 +114,25 @@ const Navigation = () => {
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden py-4 space-y-2">
-            <button 
-              onClick={() => scrollToSection('hero')}
-              className="block w-full text-left text-gray-600 hover:text-gray-900 transition-colors py-2"
-            >
-              Home
-            </button>
+            <div className="flex items-center mb-2">
+              <img 
+                src="/logo-cc.png" 
+                alt="Chandray Murmu Logo" 
+                className="h-12 w-auto object-contain cursor-pointer hover:opacity-80 transition-all duration-200 hover:scale-105"
+                onClick={() => scrollToSection('hero')}
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  const sibling = e.currentTarget.nextElementSibling as HTMLElement | null;
+                  if (sibling) sibling.style.display = 'block';
+                }}
+              />
+              <span 
+                className="text-xl font-bold text-gray-900 cursor-pointer hover:text-gray-700 transition-colors hidden"
+                onClick={() => scrollToSection('hero')}
+              >
+                Chandray Murmu
+              </span>
+            </div>
             <button 
               onClick={() => scrollToSection('projects')}
               className="block w-full text-left text-gray-600 hover:text-gray-900 transition-colors py-2"

@@ -8,7 +8,7 @@ const Projects = () => {
       title: "E-Commerce Platform",
       description: "A modern e-commerce solution built with React and Node.js, featuring real-time inventory management and seamless payment integration.",
       technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop",
       link: "#"
     },
     {
@@ -16,7 +16,7 @@ const Projects = () => {
       title: "Task Management App",
       description: "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
       technologies: ["TypeScript", "React", "Firebase", "Tailwind"],
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop",
       link: "#"
     },
     {
@@ -24,7 +24,7 @@ const Projects = () => {
       title: "Analytics Dashboard",
       description: "A comprehensive analytics dashboard for tracking business metrics with interactive charts and real-time data visualization.",
       technologies: ["React", "D3.js", "Python", "PostgreSQL"],
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop",
       link: "#"
     },
     {
@@ -32,7 +32,7 @@ const Projects = () => {
       title: "Mobile Banking App",
       description: "A secure mobile banking application with biometric authentication, transaction history, and budget tracking features.",
       technologies: ["React Native", "Redux", "Node.js", "AWS"],
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?w=800&h=600&fit=crop",
       link: "#"
     }
   ];
