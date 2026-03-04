@@ -18,10 +18,10 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['"Playfair Display"', 'serif'],
-        drama: ['"Playfair Display"', 'serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        sans: ['Sora', 'sans-serif'],
+        serif: ['"Instrument Serif"', 'serif'],
+        drama: ['"Instrument Serif"', 'serif'],
+        mono: ['"Fira Code"', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",
