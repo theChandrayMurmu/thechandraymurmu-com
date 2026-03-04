@@ -16,9 +16,12 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-start gap-8">
         {/* Logo and 4 Columns */}
         <div className="flex flex-col gap-8 w-full md:w-auto">
-          <div className="mb-4 flex items-center gap-2">
-            <img src="/logo-cc.png" alt="Chandray Murmu Logo" className="h-10 w-auto object-contain" />
-            <span className="text-lg font-bold text-gray-800">Chandray Murmu</span>
+          <div className="mb-4 flex flex-col gap-1 items-start">
+            <div className="flex items-center gap-2">
+              <img src="/logo-cc.png" alt="thechandraymurmu Logo" className="h-10 w-auto object-contain" />
+              <span className="text-xl font-bold text-gray-800 font-serif">thechandraymurmu</span>
+            </div>
+            <span className="text-sm font-serif italic text-gray-500 mt-2">Build it real. Ship it proud.</span>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>

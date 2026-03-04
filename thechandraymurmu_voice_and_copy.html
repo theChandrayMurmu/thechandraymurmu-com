@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>thechandraymurmu — Brand Voice & Website Copy</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:    #0F1F3D;
+    --blue:    #2563EB;
+    --blue-lt: #EFF6FF;
+    --blue-md: #BFDBFE;
+    --teal:    #0D9488;
+    --teal-lt: #CCFBF1;
+    --slate:   #1E293B;
+    --mid:     #475569;
+    --soft:    #94A3B8;
+    --line:    #E2E8F0;
+    --bg:      #F8FAFC;
+    --white:   #FFFFFF;
+    --gold:    #F59E0B;
+    --gold-lt: #FEF3C7;
+
+    --serif: 'Lora', Georgia, serif;
+    --sans:  'Outfit', sans-serif;
+    --mono:  'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--slate); line-height: 1.6; }
+
+  /* COVER */
+  .cover {
+    background: var(--navy);
+    padding: 80px 40px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 50% 70% at 90% 10%, rgba(37,99,235,0.2) 0%, transparent 65%),
+      radial-gradient(ellipse 30% 50% at 5% 90%, rgba(13,148,136,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .cover-inner { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+  .cover-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cover-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--teal); }
+  .cover-h1 { font-family: var(--serif); font-size: clamp(36px, 5vw, 64px); color: var(--white); line-height: 1.08; margin-bottom: 16px; }
+  .cover-h1 em { color: var(--blue-md); font-style: italic; }
+  .cover-sub { font-size: 18px; color: rgba(255,255,255,0.55); max-width: 500px; }
+  .cover-chapters {
+    display: flex;
+    gap: 12px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .chapter-pill {
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.6);
+  }
+  .chapter-pill.active { background: rgba(37,99,235,0.25); border-color: rgba(37,99,235,0.5); color: var(--blue-md); }
+
+  /* LAYOUT */
+  .wrap { max-width: 900px; margin: 0 auto; padding: 0 40px 100px; }
+
+  /* SECTION */
+  .section { margin-top: 72px; }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--blue);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  .section-tag::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--blue-md); }
+  .section-h { font-family: var(--serif); font-size: clamp(26px, 3.5vw, 40px); color: var(--navy); margin-bottom: 10px; line-height: 1.15; }
+  .section-desc { font-size: 16px; color: var(--mid); max-width: 560px; margin-bottom: 36px; }
+  hr.divider { border: none; border-top: 1px solid var(--line); margin: 64px 0 0; }
+
+  /* VOICE TABLE */
+  .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  .voice-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  .voice-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue), var(--teal));
+  }
+  .voice-trait {
+    font-family: var(--serif);
+    font-size: 20px;
+    color: var(--navy);
+    margin-bottom: 12px;
+  }
+  .voice-contrast {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .vc-row { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .vc-yes { color: var(--teal); font-weight: 600; }
+  .vc-no  { color: var(--soft); text-decoration: line-through; }
+  .vc-dot-yes { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+  .vc-dot-no  { width: 8px; height: 8px; border-radius: 50%; background: var(--line); flex-shrink: 0; }
+
+  /* PRINCIPLES */
+  .principles-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+  .principle {
+    display: flex;
+    gap: 20px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 20px 24px;
+    align-items: flex-start;
+  }
+  .principle-num {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--blue);
+    font-weight: 500;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .principle-body h4 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .principle-body p  { font-size: 14px; color: var(--mid); line-height: 1.6; }
+  .principle-body em { color: var(--blue); font-style: normal; font-weight: 600; }
+
+  /* WORDS */
+  .words-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 32px; }
+  .word-col { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 24px; }
+  .word-col-header { font-size: 13px; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+  .word-col.use .word-col-header { color: var(--teal); }
+  .word-col.avoid .word-col-header { color: #DC2626; }
+  .word-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .wtag {
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .word-col.use   .wtag { background: var(--teal-lt); color: var(--teal); }
+  .word-col.avoid .wtag { background: #FEF2F2; color: #DC2626; text-decoration: line-through; }
+
+  /* TAGLINES */
+  .tagline-list { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+  .tagline-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px 28px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .tagline-card.featured {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+  .tagline-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--soft);
+    flex-shrink: 0;
+    padding-top: 4px;
+  }
+  .tagline-card.featured .tagline-num { color: var(--blue-md); }
+  .tagline-text {
+    font-family: var(--serif);
+    font-size: 22px;
+    color: var(--navy);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .tagline-card.featured .tagline-text { color: var(--white); font-size: 28px; }
+  .tagline-angle { font-size: 13px; color: var(--mid); }
+  .tagline-card.featured .tagline-angle { color: var(--blue-md); }
+  .featured-badge {
+    margin-left: auto;
+    padding: 4px 12px;
+    background: rgba(37,99,235,0.3);
+    color: var(--blue-md);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: var(--mono);
+    flex-shrink: 0;
+    height: fit-content;
+  }
+
+  /* PITCHES */
+  .pitch-stack { display: flex; flex-direction: column; gap: 20px; margin-bottom: 32px; }
+  .pitch-card {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .pitch-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: var(--blue-lt);
+    border-bottom: 1px solid var(--blue-md);
+  }
+  .pitch-label { font-family: var(--mono); font-size: 11px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; font-weight: 500; }
+  .pitch-use { font-size: 12px; color: var(--soft); }
+  .pitch-body {
+    padding: 24px;
+    background: var(--white);
+    font-size: 16px;
+    color: var(--slate);
+    line-height: 1.75;
+  }
+  .pitch-body strong { color: var(--navy); }
+
+  /* CONTEXT TONE */
+  .context-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  .ctx-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .ctx-header {
+    padding: 12px 18px;
+    background: var(--navy);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--blue-md);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ctx-copy {
+    padding: 20px;
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.65;
+    font-style: italic;
+    border-bottom: 1px solid var(--line);
+  }
+  .ctx-note {
+    padding: 12px 20px;
+    font-size: 12px;
+    color: var(--soft);
+    font-family: var(--mono);
+  }
+
+  /* WEBSITE SECTIONS */
+  .site-map {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .page-pill {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--navy);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .page-pill .pi { font-size: 16px; }
+  .page-pill .pd { font-size: 12px; color: var(--soft); font-weight: 400; margin-top: 2px; }
+  .page-pill-inner { display: flex; flex-direction: column; }
+
+  /* HOMEPAGE SECTIONS */
+  .homepage-sections { display: flex; flex-direction: column; gap: 24px; margin-bottom: 32px; }
+  .hs-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .hs-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 24px;
+    background: linear-gradient(90deg, var(--blue-lt), var(--white));
+    border-bottom: 1px solid var(--line);
+  }
+  .hs-num {
+    width: 32px; height: 32px;
+    background: var(--blue);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--mono);
+    font-size: 13px;
+    color: white;
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+  .hs-title { font-weight: 700; font-size: 15px; color: var(--navy); }
+  .hs-goal { font-size: 13px; color: var(--mid); margin-top: 1px; }
+  .hs-body { padding: 24px; }
+  .hs-row { margin-bottom: 16px; }
+  .hs-row:last-child { margin-bottom: 0; }
+  .hs-field { font-family: var(--mono); font-size: 11px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+  .hs-headline { font-family: var(--serif); font-size: 22px; color: var(--navy); line-height: 1.25; margin-bottom: 4px; }
+  .hs-copy { font-size: 14px; color: var(--mid); line-height: 1.7; }
+  .hs-cta {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 22px;
+    background: var(--blue);
+    color: white;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .hs-cta.ghost {
+    background: transparent;
+    color: var(--blue);
+    border: 1.5px solid var(--blue-md);
+  }
+  .hs-elements { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .hs-elem { padding: 4px 12px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; font-size: 12px; color: var(--mid); font-family: var(--mono); }
+
+  /* SERVICES */
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+  .svc-card {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 24px;
+  }
+  .svc-card:first-child { border-top: 3px solid var(--blue); }
+  .svc-card:nth-child(2) { border-top: 3px solid var(--teal); }
+  .svc-card:nth-child(3) { border-top: 3px solid var(--gold); }
+  .svc-card:nth-child(4) { border-top: 3px solid #8B5CF6; }
+  .svc-name { font-weight: 700; font-size: 16px; color: var(--navy); margin-bottom: 4px; }
+  .svc-tagline { font-size: 14px; color: var(--mid); margin-bottom: 12px; line-height: 1.5; }
+  .svc-for { font-family: var(--mono); font-size: 11px; color: var(--blue); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+  .svc-deliverables { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .svc-deliverables li { font-size: 13px; color: var(--slate); display: flex; align-items: flex-start; gap: 8px; }
+  .svc-deliverables li::before { content: '→'; color: var(--blue); flex-shrink: 0; font-weight: 600; }
+
+  /* META */
+  .meta-card {
+    background: var(--navy);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+  }
+  .meta-label { font-family: var(--mono); font-size: 11px; color: var(--teal); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 10px; }
+  .meta-value { font-size: 15px; color: var(--white); line-height: 1.6; }
+  .meta-value span { color: var(--blue-md); }
+
+  /* ANIMATIONS */
+  @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .section { animation: slideUp 0.45s ease both; }
+  .section:nth-child(2)  { animation-delay: 0.05s; }
+  .section:nth-child(3)  { animation-delay: 0.10s; }
+  .section:nth-child(4)  { animation-delay: 0.15s; }
+  .section:nth-child(5)  { animation-delay: 0.20s; }
+
+  @media (max-width: 680px) {
+    .voice-grid, .words-grid, .context-grid, .services-grid, .site-map { grid-template-columns: 1fr; }
+    .site-map { grid-template-columns: 1fr 1fr; }
+    .wrap { padding: 0 20px 80px; }
+    .cover { padding: 60px 20px 48px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-eyebrow">thechandraymurmu · Brand System</div>
+    <h1 class="cover-h1">Voice, Messaging<br>& <em>Website Copy</em></h1>
+    <p class="cover-sub">How the brand sounds, what it says, and the words that go on every page.</p>
+    <div class="cover-chapters">
+      <div class="chapter-pill active">01 · Tone of Voice</div>
+      <div class="chapter-pill active">02 · Writing Principles</div>
+      <div class="chapter-pill active">03 · Words We Use</div>
+      <div class="chapter-pill active">04 · Taglines</div>
+      <div class="chapter-pill active">05 · Elevator Pitches</div>
+      <div class="chapter-pill active">06 · Website Copy</div>
+      <div class="chapter-pill active">07 · Services</div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ── 01 TONE OF VOICE ── -->
+  <div class="section">
+    <div class="section-tag">01</div>
+    <h2 class="section-h">Tone of Voice</h2>
+    <p class="section-desc">Four attributes that define how thechandraymurmu sounds — and just as importantly, what it doesn't sound like.</p>
+
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-trait">Expert, not arrogant</div>
+        <p style="font-size:14px;color:var(--mid);margin-bottom:14px;">You know your craft deeply. But you never talk over people's heads or make them feel small for not knowing something.</p>
+        <div class="voice-contrast">
+          <div class="vc-row"><div class="vc-dot-yes"></div><span class="vc-yes">"Here's how I'd approach this for you."</span></div>
+          <div class="vc-row"><div class="vc-dot-no"></div><span class="vc-no">"As an experienced full-stack engineer..."</span></div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-trait">Warm, not gushing</div>
+        <p style="font-size:14px;color:var(--mid);margin-bottom:14px;">Friendly and human — but not over-the-top. No "Amazing! Fantastic! So excited to work with you!" every other sentence.</p>
+        <div class="voice-contrast">
+          <div class="vc-row"><div class="vc-dot-yes"></div><span class="vc-yes">"Let's figure out what actually works for you."</span></div>
+          <div class="vc-row"><div class="vc-dot-no"></div><span class="vc-no">"We are SO passionate about your success!!"</span></div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-trait">Clear, not dumbed down</div>
+        <p style="font-size:14px;color:var(--mid);margin-bottom:14px;">Plain language is a sign of respect, not a sign that you think your audience is stupid. Short words beat long ones.</p>
+        <div class="voice-contrast">
+          <div class="vc-row"><div class="vc-dot-yes"></div><span class="vc-yes">"I build websites that bring in clients."</span></div>
+          <div class="vc-row"><div class="vc-dot-no"></div><span class="vc-no">"I deliver end-to-end digital transformation."</span></div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-trait">Honest, not salesy</div>
+        <p style="font-size:14px;color:var(--mid);margin-bottom:14px;">You say what's true — even if it's "this might not be the right fit." Trust builds faster with honesty than with hype.</p>
+        <div class="voice-contrast">
+          <div class="vc-row"><div class="vc-dot-yes"></div><span class="vc-yes">"Here's what you actually need (and what you don't)."</span></div>
+          <div class="vc-row"><div class="vc-dot-no"></div><span class="vc-no">"Our premium solution maximises your ROI potential."</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 02 WRITING PRINCIPLES ── -->
+  <div class="section">
+    <div class="section-tag">02</div>
+    <h2 class="section-h">Writing Principles</h2>
+    <p class="section-desc">Five rules to follow every time you write — for your site, your social posts, your README, or a client email.</p>
+
+    <div class="principles-list">
+      <div class="principle">
+        <div class="principle-num">01</div>
+        <div class="principle-body">
+          <h4>Write to one person</h4>
+          <p>Never write to "companies" or "users." Write to <em>one person</em> — Sam the founder, Priya the freelancer. Use "you" and "I", never "clients" or "our team." It should feel like a message, not a brochure.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">02</div>
+        <div class="principle-body">
+          <h4>Lead with the outcome, not the process</h4>
+          <p>Your audience cares about <em>what they'll have</em>, not how you'll build it. Start with "You'll get a website that brings in leads" before "I use Next.js, Tailwind, and a headless CMS."</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">03</div>
+        <div class="principle-body">
+          <h4>Short sentences are a superpower</h4>
+          <p>If a sentence has more than 20 words, cut it in two. <em>Short sentences build confidence.</em> Long sentences signal uncertainty. Punchy writing = someone who knows what they're doing.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">04</div>
+        <div class="principle-body">
+          <h4>Make every CTA a next step, not a pressure move</h4>
+          <p>Replace "Buy Now" with <em>"Start a conversation"</em>. Replace "Limited spots available!" with "When you're ready, I'm here." Low pressure CTAs convert better for a personal brand built on trust.</p>
+        </div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">05</div>
+        <div class="principle-body">
+          <h4>Show, don't just tell</h4>
+          <p>Instead of "I'm reliable," say <em>"Every project I've shipped has landed on time."</em> Instead of "I care about quality," show a project and walk through one decision you made for the user's benefit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 03 WORDS ── -->
+  <div class="section">
+    <div class="section-tag">03</div>
+    <h2 class="section-h">Words We Use & Avoid</h2>
+    <p class="section-desc">The vocabulary of the thechandraymurmu brand. Consistent word choices build a recognisable voice over time.</p>
+
+    <div class="words-grid">
+      <div class="word-col use">
+        <div class="word-col-header">✓ Words We Use</div>
+        <div class="word-tags">
+          <span class="wtag">Build</span>
+          <span class="wtag">Ship</span>
+          <span class="wtag">Real</span>
+          <span class="wtag">Craft</span>
+          <span class="wtag">Thoughtful</span>
+          <span class="wtag">You</span>
+          <span class="wtag">Together</span>
+          <span class="wtag">Open</span>
+          <span class="wtag">Simple</span>
+          <span class="wtag">Works</span>
+          <span class="wtag">Project</span>
+          <span class="wtag">Honest</span>
+          <span class="wtag">People</span>
+          <span class="wtag">Idea</span>
+          <span class="wtag">Clear</span>
+        </div>
+      </div>
+      <div class="word-col avoid">
+        <div class="word-col-header">✗ Words We Avoid</div>
+        <div class="word-tags">
+          <span class="wtag">Synergy</span>
+          <span class="wtag">Leverage</span>
+          <span class="wtag">Solutions</span>
+          <span class="wtag">World-class</span>
+          <span class="wtag">Passionate</span>
+          <span class="wtag">Innovative</span>
+          <span class="wtag">Scalable</span>
+          <span class="wtag">Cutting-edge</span>
+          <span class="wtag">Empower</span>
+          <span class="wtag">Ecosystem</span>
+          <span class="wtag">Clients</span>
+          <span class="wtag">Deliverables</span>
+          <span class="wtag">ROI</span>
+          <span class="wtag">Transformation</span>
+          <span class="wtag">Best-in-class</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 04 TAGLINES ── -->
+  <div class="section">
+    <div class="section-tag">04</div>
+    <h2 class="section-h">Tagline Options</h2>
+    <p class="section-desc">Five candidates — different angles, same brand. The recommended option is highlighted. Use this line everywhere: site header, social bios, email signature.</p>
+
+    <div class="tagline-list">
+      <div class="tagline-card featured">
+        <div class="tagline-num">★</div>
+        <div>
+          <div class="tagline-text">Build it real. Ship it proud.</div>
+          <div class="tagline-angle">Action-oriented and personal. Captures the maker spirit and the care that goes into the work. Works for both services and open-source.</div>
+        </div>
+        <div class="featured-badge">Recommended</div>
+      </div>
+      <div class="tagline-card">
+        <div class="tagline-num">02</div>
+        <div>
+          <div class="tagline-text">One project away from something great.</div>
+          <div class="tagline-angle">Speaks directly to the audience's ambition. Optimistic and motivating — positions the brand as the catalyst for their next step.</div>
+        </div>
+      </div>
+      <div class="tagline-card">
+        <div class="tagline-num">03</div>
+        <div>
+          <div class="tagline-text">Your idea. Online. For real.</div>
+          <div class="tagline-angle">Punchy and plain. The "for real" is the hook — it implies others give you templates; this brand gives you something genuine.</div>
+        </div>
+      </div>
+      <div class="tagline-card">
+        <div class="tagline-num">04</div>
+        <div>
+          <div class="tagline-text">Made with thought. Shipped with care.</div>
+          <div class="tagline-angle">Emphasises quality and intention. Ideal for projects that are design-heavy or where the client cares about craft over speed.</div>
+        </div>
+      </div>
+      <div class="tagline-card">
+        <div class="tagline-num">05</div>
+        <div>
+          <div class="tagline-text">Open source. Open doors.</div>
+          <div class="tagline-angle">Niche use — best for the open-source section of your site or GitHub profile. Connects code sharing with opportunity creation.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 05 ELEVATOR PITCHES ── -->
+  <div class="section">
+    <div class="section-tag">05</div>
+    <h2 class="section-h">Elevator Pitches</h2>
+    <p class="section-desc">Three versions of the same story — adapt them to the moment. Copy, paste, and make them yours.</p>
+
+    <div class="pitch-stack">
+      <div class="pitch-card">
+        <div class="pitch-header">
+          <div class="pitch-label">1-Sentence · Twitter bio, quick intro</div>
+          <div class="pitch-use">≈ 18 words</div>
+        </div>
+        <div class="pitch-body">
+          I build websites and digital products that help <strong>startups, freelancers, and small businesses</strong> show up online — and mean it.
+        </div>
+      </div>
+
+      <div class="pitch-card">
+        <div class="pitch-header">
+          <div class="pitch-label">3-Sentence · LinkedIn headline + summary opener</div>
+          <div class="pitch-use">≈ 55 words</div>
+        </div>
+        <div class="pitch-body">
+          I'm Chandray Murmu — a developer and creator who builds websites, SaaS products, and open-source tools for people with real ideas.<br><br>
+          I work with startups, freelancers, and small businesses who are ready to take their online presence seriously — without the agency price tag or the copy-paste template.<br><br>
+          <strong>If you have a project worth building, I'm here for it.</strong>
+        </div>
+      </div>
+
+      <div class="pitch-card">
+        <div class="pitch-header">
+          <div class="pitch-label">Full Paragraph · About page, portfolio intro</div>
+          <div class="pitch-use">≈ 110 words</div>
+        </div>
+        <div class="pitch-body">
+          Hey — I'm Chandray. I build things on the internet.<br><br>
+          For the past few years, I've helped companies, freelancers, and founders create websites and digital products that actually work for them — not just look good in a browser. I care about the details: the copy that makes someone feel understood, the layout that guides them to act, the code that doesn't break at the worst moment.<br><br>
+          Outside of client work, I build and share <strong>open-source projects</strong> — tools and experiments I think the world could use. Everything is public because I believe good ideas grow when they're shared.<br><br>
+          <strong>If you're building something, let's talk.</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 06 TONE BY CONTEXT ── -->
+  <div class="section">
+    <div class="section-tag">06</div>
+    <h2 class="section-h">Tone by Context</h2>
+    <p class="section-desc">The brand voice stays consistent — but the register shifts depending on where and why you're writing.</p>
+
+    <div class="context-grid">
+      <div class="ctx-card">
+        <div class="ctx-header">Hero headline · Website</div>
+        <div class="ctx-copy">"Your idea deserves a real home online. Let's build it."</div>
+        <div class="ctx-note">Inspiring · Bold · Direct. One sentence. No jargon.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-header">LinkedIn Bio</div>
+        <div class="ctx-copy">"Developer & creator building websites, SaaS tools, and open-source projects for startups and small businesses. I ship things that work."</div>
+        <div class="ctx-note">Professional · Confident · Clear credentials upfront.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-header">Twitter / X Bio</div>
+        <div class="ctx-copy">"building for the web · open source · helping small biz show up online · @thechandraymurmu"</div>
+        <div class="ctx-note">Casual · Lowercase energy · Brief. Keywords natural.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-header">GitHub README Intro</div>
+        <div class="ctx-copy">"Hey — I'm Chandray. I build open-source tools and web products. Everything here is free to use, fork, and improve."</div>
+        <div class="ctx-note">Developer-native · Generous · No marketing fluff.</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-header">Error Message · SaaS product</div>
+        <div class="ctx-copy">"Something went wrong on our end — not yours. Try refreshing, or drop me a message if it keeps happening."</div>
+        <div class="ctx-note">Human · Blame-free · Offers a path forward. No "Error 500."</div>
+      </div>
+      <div class="ctx-card">
+        <div class="ctx-header">Onboarding / Success Message</div>
+        <div class="ctx-copy">"You're in. Let's get your project off the ground — I'll walk you through everything step by step."</div>
+        <div class="ctx-note">Warm · Reassuring · Makes the user feel supported, not alone.</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 07 SITE MAP ── -->
+  <div class="section">
+    <div class="section-tag">07</div>
+    <h2 class="section-h">Website Structure</h2>
+    <p class="section-desc">Every page on the site, its purpose, and the story it tells a visitor.</p>
+
+    <div class="site-map">
+      <div class="page-pill"><span class="pi">🏠</span><div class="page-pill-inner"><span>Home</span><span class="pd">First impression + all-in-one overview</span></div></div>
+      <div class="page-pill"><span class="pi">👤</span><div class="page-pill-inner"><span>About</span><span class="pd">The story, values, and why you do this</span></div></div>
+      <div class="page-pill"><span class="pi">🛠</span><div class="page-pill-inner"><span>Services</span><span class="pd">What you offer and who it's for</span></div></div>
+      <div class="page-pill"><span class="pi">💼</span><div class="page-pill-inner"><span>Portfolio</span><span class="pd">Client work with outcomes, not just screenshots</span></div></div>
+      <div class="page-pill"><span class="pi">⚡</span><div class="page-pill-inner"><span>Open Source</span><span class="pd">Side projects and tools you've built and shared</span></div></div>
+      <div class="page-pill"><span class="pi">✉️</span><div class="page-pill-inner"><span>Contact</span><span class="pd">One clear way to start a conversation</span></div></div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 08 HOMEPAGE SECTIONS ── -->
+  <div class="section">
+    <div class="section-tag">08</div>
+    <h2 class="section-h">Homepage Section Copy</h2>
+    <p class="section-desc">Ready-to-use copy for every section of your homepage — headlines, supporting copy, and CTAs all written in brand voice.</p>
+
+    <div class="homepage-sections">
+
+      <!-- HERO -->
+      <div class="hs-card">
+        <div class="hs-header">
+          <div class="hs-num">1</div>
+          <div>
+            <div class="hs-title">Hero</div>
+            <div class="hs-goal">Goal: Instantly communicate what you do and who you help</div>
+          </div>
+        </div>
+        <div class="hs-body">
+          <div class="hs-row">
+            <div class="hs-field">H1 Headline</div>
+            <div class="hs-headline">Your idea deserves a real home online.</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">Supporting Copy</div>
+            <div class="hs-copy">I build websites and digital products for startups, freelancers, and small businesses who are ready to show up online — without the agency price tag or the copy-paste template.</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">Primary CTA</div>
+            <a class="hs-cta">Start a project →</a>
+            <a class="hs-cta ghost" style="margin-left:10px;">See my work</a>
+          </div>
+          <div class="hs-elements">
+            <span class="hs-elem">Animated tagline</span>
+            <span class="hs-elem">Profile photo or avatar</span>
+            <span class="hs-elem">3 quick trust icons (projects shipped, open-source repos, years building)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT I DO -->
+      <div class="hs-card">
+        <div class="hs-header">
+          <div class="hs-num">2</div>
+          <div>
+            <div class="hs-title">What I Do</div>
+            <div class="hs-goal">Goal: Show the three core things you offer in simple, scannable terms</div>
+          </div>
+        </div>
+        <div class="hs-body">
+          <div class="hs-row">
+            <div class="hs-field">Section Headline</div>
+            <div class="hs-headline">Three ways I can help you.</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">Supporting Copy</div>
+            <div class="hs-copy">Whether you need a website from scratch, a product built and launched, or an open-source tool you can build on — here's how we can work together.</div>
+          </div>
+          <div class="hs-elements">
+            <span class="hs-elem">🌐 Website Design & Build</span>
+            <span class="hs-elem">⚡ SaaS & Web App Development</span>
+            <span class="hs-elem">🔧 Open-Source Projects</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FEATURED WORK -->
+      <div class="hs-card">
+        <div class="hs-header">
+          <div class="hs-num">3</div>
+          <div>
+            <div class="hs-title">Featured Projects</div>
+            <div class="hs-goal">Goal: Build credibility through work, not claims</div>
+          </div>
+        </div>
+        <div class="hs-body">
+          <div class="hs-row">
+            <div class="hs-field">Section Headline</div>
+            <div class="hs-headline">Things I've built that actually ship.</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">Supporting Copy</div>
+            <div class="hs-copy">A mix of client work and personal projects. Every card below links to the real thing — no mockups, no "coming soon."</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">CTA</div>
+            <a class="hs-cta ghost">See all projects →</a>
+          </div>
+          <div class="hs-elements">
+            <span class="hs-elem">Project cards (3–4 max)</span>
+            <span class="hs-elem">Live link + GitHub link per card</span>
+            <span class="hs-elem">Tech stack badges</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHY ME -->
+      <div class="hs-card">
+        <div class="hs-header">
+          <div class="hs-num">4</div>
+          <div>
+            <div class="hs-title">Why Work With Me</div>
+            <div class="hs-goal">Goal: Address the "why you vs. an agency" question head-on</div>
+          </div>
+        </div>
+        <div class="hs-body">
+          <div class="hs-row">
+            <div class="hs-field">Section Headline</div>
+            <div class="hs-headline">You get me. Not a handoff to a junior team.</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">Supporting Copy</div>
+            <div class="hs-copy">When you work with me, you're talking directly to the person building your product. No account managers. No miscommunication. Just clear, honest work — from start to launch.</div>
+          </div>
+          <div class="hs-elements">
+            <span class="hs-elem">✓ Direct communication</span>
+            <span class="hs-elem">✓ Transparent pricing</span>
+            <span class="hs-elem">✓ Ships on time</span>
+            <span class="hs-elem">✓ Post-launch support</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TESTIMONIALS -->
+      <div class="hs-card">
+        <div class="hs-header">
+          <div class="hs-num">5</div>
+          <div>
+            <div class="hs-title">Testimonials</div>
+            <div class="hs-goal">Goal: Let others say what you can't say about yourself</div>
+          </div>
+        </div>
+        <div class="hs-body">
+          <div class="hs-row">
+            <div class="hs-field">Section Headline</div>
+            <div class="hs-headline">What people say when the project's done.</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">Placeholder Testimonial Format</div>
+            <div class="hs-copy" style="font-style:italic;">"[Quote that mentions a specific outcome — not just 'great to work with' but 'our leads doubled after launch'.]"<br><br>— Name, Role, Company</div>
+          </div>
+          <div class="hs-elements">
+            <span class="hs-elem">2–3 quotes max</span>
+            <span class="hs-elem">Name + role + optional photo</span>
+            <span class="hs-elem">Specific result preferred over generic praise</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="hs-card">
+        <div class="hs-header">
+          <div class="hs-num">6</div>
+          <div>
+            <div class="hs-title">Contact / Final CTA</div>
+            <div class="hs-goal">Goal: Make starting a conversation feel easy and low-pressure</div>
+          </div>
+        </div>
+        <div class="hs-body">
+          <div class="hs-row">
+            <div class="hs-field">Section Headline</div>
+            <div class="hs-headline">Have a project in mind? Let's talk.</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">Supporting Copy</div>
+            <div class="hs-copy">It doesn't have to be fully figured out yet. Tell me what you're working on — even just the rough idea — and we'll figure out the rest together. No obligation, no hard sell.</div>
+          </div>
+          <div class="hs-row">
+            <div class="hs-field">CTA</div>
+            <a class="hs-cta">Send me a message →</a>
+          </div>
+          <div class="hs-elements">
+            <span class="hs-elem">Email link</span>
+            <span class="hs-elem">Simple contact form (name + email + idea)</span>
+            <span class="hs-elem">Response time note: "I reply within 24–48 hours"</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 09 SERVICES ── -->
+  <div class="section">
+    <div class="section-tag">09</div>
+    <h2 class="section-h">Services Page Copy</h2>
+    <p class="section-desc">Four clear service offerings — each with a name, tagline, audience, and deliverables.</p>
+
+    <div class="services-grid">
+      <div class="svc-card">
+        <div class="svc-name">Website Design & Build</div>
+        <div class="svc-tagline">A fast, beautiful site that represents your brand and turns visitors into leads.</div>
+        <div class="svc-for">For: Freelancers, small businesses, consultants</div>
+        <ul class="svc-deliverables">
+          <li>Custom design (no templates)</li>
+          <li>Mobile-first, fast-loading build</li>
+          <li>SEO basics + analytics setup</li>
+          <li>30-day post-launch support</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-name">SaaS & Web App Development</div>
+        <div class="svc-tagline">From idea to working product — built clean, shipped on time.</div>
+        <div class="svc-for">For: Startups, founders with an MVP to build</div>
+        <ul class="svc-deliverables">
+          <li>Full-stack web application</li>
+          <li>Auth, database, API integration</li>
+          <li>Deployment + documentation</li>
+          <li>Scalable codebase you own 100%</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-name">Digital Presence Setup</div>
+        <div class="svc-tagline">Everything you need to go from "not online" to "ready to be found."</div>
+        <div class="svc-for">For: Solopreneurs, local businesses, new brands</div>
+        <ul class="svc-deliverables">
+          <li>Domain + hosting setup</li>
+          <li>Landing page or mini-site</li>
+          <li>Google Business + social profiles</li>
+          <li>Basic SEO and site speed audit</li>
+        </ul>
+      </div>
+      <div class="svc-card">
+        <div class="svc-name">Open-Source Collaboration</div>
+        <div class="svc-tagline">Join a project, contribute to mine, or commission a tool built in public.</div>
+        <div class="svc-for">For: Developers, communities, anyone who believes in open</div>
+        <ul class="svc-deliverables">
+          <li>Public GitHub repo + full docs</li>
+          <li>MIT or Apache 2.0 license</li>
+          <li>Contribution guide included</li>
+          <li>Roadmap discussed openly</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 10 SEO META ── -->
+  <div class="section">
+    <div class="section-tag">10</div>
+    <h2 class="section-h">SEO & Meta Copy</h2>
+    <p class="section-desc">Homepage metadata — copy these exactly into your &lt;head&gt; or your site builder's SEO settings.</p>
+
+    <div class="meta-card">
+      <div class="meta-label">Page Title · &lt;title&gt;</div>
+      <div class="meta-value">thechandraymurmu · <span>Web Design, SaaS Development & Open Source</span></div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Meta Description · &lt;meta name="description"&gt;</div>
+      <div class="meta-value">I help startups, freelancers, and small businesses build a real online presence — <span>custom websites, web apps, and open-source tools</span> made with craft and shipped on time.</div>
+    </div>
+    <div class="meta-card">
+      <div class="meta-label">Open Graph Title · og:title</div>
+      <div class="meta-value">thechandraymurmu — <span>Building the web, one project at a time.</span></div>
+    </div>
+    <div class="meta-card" style="margin-bottom:0;">
+      <div class="meta-label">Open Graph Description · og:description</div>
+      <div class="meta-value">Websites, SaaS products, and open-source tools for people with <span>real ideas and real businesses</span>. Direct, thoughtful, and shipped on time.</div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:64px 0 0;margin-top:64px;border-top:1px solid var(--line);">
+    <div style="font-family:var(--serif);font-size:30px;color:var(--blue);margin-bottom:8px;">thechandraymurmu</div>
+    <div style="font-family:var(--mono);font-size:11px;color:var(--soft);letter-spacing:0.12em;text-transform:uppercase;">Brand Voice & Website Copy · v1.0</div>
+    <div style="font-family:var(--serif);font-size:16px;color:var(--soft);margin-top:16px;font-style:italic;">Build it real. Ship it proud.</div>
+  </div>
+
+</div>
+</body>
+</html>

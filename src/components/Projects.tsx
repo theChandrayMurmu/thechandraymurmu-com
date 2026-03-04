@@ -41,9 +41,9 @@ const Projects = () => {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-light text-gray-900 mb-4">Featured Projects</h2>
+          <h2 className="text-4xl font-light text-gray-900 mb-4">Things I've built that actually ship.</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            A selection of projects that showcase my expertise in full-stack development and design.
+            A mix of client work and personal projects. Every card below links to the real thing — no mockups, no waitlists.
           </p>
         </div>
 
@@ -51,8 +51,8 @@ const Projects = () => {
           {projects.map((project) => (
             <Card key={project.id} className="group hover:shadow-xl transition-all duration-300 border-0 shadow-md">
               <div className="aspect-video bg-gradient-to-br from-gray-100 to-gray-200 rounded-t-lg overflow-hidden">
-                <img 
-                  src={project.image} 
+                <img
+                  src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
@@ -67,7 +67,7 @@ const Projects = () => {
                     </Badge>
                   ))}
                 </div>
-                <a 
+                <a
                   href={project.link}
                   className="text-gray-900 font-medium hover:underline transition-colors"
                 >

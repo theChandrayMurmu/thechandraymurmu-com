@@ -48,6 +48,7 @@
     "cobe": "^0.6.4",
     "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.19.1",
+    "gsap": "^3.14.2",
     "input-otp": "^1.4.2",
     "lucide-react": "^0.428.0",
     "motion": "^12.19.1",

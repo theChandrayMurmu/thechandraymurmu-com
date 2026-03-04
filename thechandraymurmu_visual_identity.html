@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>thechandraymurmu — Visual Identity System</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* ── PRIMARY PALETTE ── */
+    --blue-900: #0F1F3D;
+    --blue-800: #1A3260;
+    --blue-700: #1D4ED8;
+    --blue-600: #2563EB;
+    --blue-500: #3B82F6;
+    --blue-400: #60A5FA;
+    --blue-200: #BFDBFE;
+    --blue-100: #DBEAFE;
+    --blue-50:  #EFF6FF;
+
+    /* ── ACCENT ── */
+    --teal-600: #0D9488;
+    --teal-400: #2DD4BF;
+    --teal-100: #CCFBF1;
+
+    /* ── NEUTRALS ── */
+    --slate-900: #0F172A;
+    --slate-800: #1E293B;
+    --slate-600: #475569;
+    --slate-400: #94A3B8;
+    --slate-200: #E2E8F0;
+    --slate-100: #F1F5F9;
+    --slate-50:  #F8FAFC;
+    --white:     #FFFFFF;
+
+    /* ── SEMANTIC ── */
+    --success: #059669;
+    --warning: #D97706;
+    --error:   #DC2626;
+    --info:    #0EA5E9;
+
+    /* ── TYPE ── */
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body:    'Plus Jakarta Sans', sans-serif;
+    --font-mono:    'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--slate-50);
+    color: var(--slate-900);
+    line-height: 1.6;
+  }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1080px; margin: 0 auto; padding: 0 32px 80px; }
+
+  /* ── COVER ── */
+  .cover {
+    background: var(--blue-900);
+    min-height: 340px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px 32px 48px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 64px;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 80% at 80% 20%, rgba(59,130,246,0.25) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(13,148,136,0.15) 0%, transparent 60%);
+  }
+  .cover-inner { position: relative; max-width: 1080px; margin: 0 auto; width: 100%; }
+  .cover-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    color: var(--teal-400);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 72px);
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 12px;
+  }
+  .cover-sub {
+    font-size: 18px;
+    color: var(--blue-200);
+    font-weight: 400;
+    max-width: 480px;
+  }
+  .cover-dot {
+    width: 8px; height: 8px;
+    background: var(--teal-400);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 72px; }
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--blue-600);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 42px);
+    color: var(--slate-900);
+    margin-bottom: 8px;
+    line-height: 1.15;
+  }
+  .section-desc {
+    font-size: 16px;
+    color: var(--slate-600);
+    max-width: 560px;
+    margin-bottom: 36px;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--slate-200);
+    margin: 64px 0;
+  }
+
+  /* ── COLOR SWATCHES ── */
+  .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px; }
+  .swatch {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .swatch-color { height: 100px; }
+  .swatch-info {
+    background: var(--white);
+    padding: 14px 16px;
+    border-top: 1px solid var(--slate-100);
+  }
+  .swatch-name { font-weight: 600; font-size: 14px; color: var(--slate-900); margin-bottom: 2px; }
+  .swatch-hex { font-family: var(--font-mono); font-size: 12px; color: var(--slate-400); }
+  .swatch-use { font-size: 12px; color: var(--slate-600); margin-top: 4px; }
+
+  .color-row { display: flex; gap: 6px; margin-bottom: 24px; align-items: flex-end; }
+  .scale-chip { flex: 1; border-radius: 6px; }
+  .scale-chip span { display: block; font-family: var(--font-mono); font-size: 10px; text-align: center; padding: 4px 0; }
+
+  .semantic-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .semantic-chip {
+    padding: 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .semantic-chip .label { opacity: 0.7; font-size: 11px; font-weight: 500; margin-bottom: 4px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* ── USAGE RATIO ── */
+  .ratio-bar {
+    display: flex;
+    height: 56px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    gap: 3px;
+  }
+  .ratio-segment { display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 600; color: white; gap: 6px; }
+  .ratio-legend { display: flex; gap: 24px; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--slate-600); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ── TYPOGRAPHY ── */
+  .type-specimen { background: var(--white); border-radius: 16px; padding: 40px; border: 1px solid var(--slate-200); margin-bottom: 24px; }
+  .type-label { font-family: var(--font-mono); font-size: 11px; color: var(--blue-600); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+  .type-scale-table { width: 100%; border-collapse: collapse; }
+  .type-scale-table th { text-align: left; font-size: 12px; color: var(--slate-400); font-weight: 500; padding: 0 16px 12px 0; border-bottom: 1px solid var(--slate-100); font-family: var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; }
+  .type-scale-table td { padding: 16px 16px 16px 0; border-bottom: 1px solid var(--slate-50); vertical-align: middle; }
+  .type-scale-table tr:last-child td { border-bottom: none; }
+  .type-name { font-family: var(--font-mono); font-size: 12px; color: var(--slate-400); white-space: nowrap; }
+  .type-meta { font-family: var(--font-mono); font-size: 12px; color: var(--slate-400); }
+  .font-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px; }
+  .font-card { background: var(--white); border: 1px solid var(--slate-200); border-radius: 16px; padding: 32px; }
+  .font-card-label { font-family: var(--font-mono); font-size: 11px; color: var(--blue-600); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px; }
+  .font-card-name { font-size: 14px; font-weight: 600; color: var(--slate-900); margin-bottom: 20px; }
+  .font-card-specimen { color: var(--slate-700); }
+  .font-weights { display: flex; flex-direction: column; gap: 6px; margin-top: 16px; }
+  .weight-row { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px solid var(--slate-100); padding-bottom: 4px; }
+  .weight-label { font-family: var(--font-mono); font-size: 11px; color: var(--slate-400); }
+
+  /* ── LOGO ── */
+  .logo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 32px; }
+  .logo-card { border-radius: 16px; overflow: hidden; border: 1px solid var(--slate-200); }
+  .logo-preview {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+  }
+  .logo-info { background: var(--white); padding: 20px; border-top: 1px solid var(--slate-100); }
+  .logo-info h4 { font-size: 15px; font-weight: 600; color: var(--slate-900); margin-bottom: 4px; }
+  .logo-info p { font-size: 13px; color: var(--slate-600); line-height: 1.5; }
+
+  /* Logo concepts */
+  .logo-wordmark { font-family: var(--font-display); font-size: 22px; color: var(--white); letter-spacing: -0.01em; }
+  .logo-wordmark span { color: var(--teal-400); }
+  .logo-combo { display: flex; align-items: center; gap: 12px; }
+  .logo-mark {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--blue-600), var(--teal-600));
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: white;
+    flex-shrink: 0;
+  }
+  .logo-text-stack { display: flex; flex-direction: column; }
+  .logo-text-primary { font-family: var(--font-display); font-size: 18px; color: var(--white); line-height: 1; }
+  .logo-text-secondary { font-family: var(--font-mono); font-size: 10px; color: var(--blue-200); letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; }
+  .logo-icon-only {
+    width: 64px; height: 64px;
+    background: linear-gradient(135deg, var(--blue-600), var(--teal-600));
+    border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: white;
+    box-shadow: 0 8px 24px rgba(37,99,235,0.4);
+  }
+
+  /* ── SPACING ── */
+  .spacing-row { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 32px; }
+  .space-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .space-box { background: var(--blue-200); border-radius: 4px; width: 100%; }
+  .space-label { font-family: var(--font-mono); font-size: 11px; color: var(--slate-600); text-align: center; }
+
+  /* ── RADIUS ── */
+  .radius-row { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-bottom: 32px; }
+  .radius-item { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .radius-box { width: 64px; height: 64px; background: var(--blue-200); border: 2px solid var(--blue-400); }
+  .radius-label { font-family: var(--font-mono); font-size: 11px; color: var(--slate-600); }
+
+  /* ── SHADOWS ── */
+  .shadow-row { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 32px; align-items: flex-end; }
+  .shadow-card { width: 120px; height: 80px; background: var(--white); border-radius: 10px; display: flex; align-items: flex-end; padding: 12px; }
+  .shadow-card span { font-family: var(--font-mono); font-size: 11px; color: var(--slate-400); }
+
+  /* ── UI EXAMPLES ── */
+  .ui-examples { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .ui-card { background: var(--white); border: 1px solid var(--slate-200); border-radius: 16px; padding: 28px; }
+  .ui-card h4 { font-size: 13px; font-weight: 600; color: var(--slate-400); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 20px; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 8px; font-family: var(--font-body); font-size: 14px; font-weight: 600; cursor: pointer; border: none; transition: all 0.2s; }
+  .btn-primary { background: var(--blue-600); color: white; }
+  .btn-primary:hover { background: var(--blue-700); }
+  .btn-secondary { background: var(--blue-50); color: var(--blue-700); }
+  .btn-ghost { background: transparent; color: var(--slate-600); border: 1.5px solid var(--slate-200); }
+  .btn-success { background: #ECFDF5; color: var(--success); }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+
+  .input-demo { width: 100%; padding: 10px 14px; border: 1.5px solid var(--slate-200); border-radius: 8px; font-family: var(--font-body); font-size: 14px; color: var(--slate-900); background: var(--white); outline: none; transition: border-color 0.2s; margin-bottom: 10px; }
+  .input-demo:focus { border-color: var(--blue-500); box-shadow: 0 0 0 3px rgba(59,130,246,0.12); }
+  .input-label { font-size: 13px; font-weight: 600; color: var(--slate-700); margin-bottom: 6px; display: block; }
+
+  .badge { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
+  .badge-blue { background: var(--blue-100); color: var(--blue-700); }
+  .badge-teal { background: var(--teal-100); color: var(--teal-600); }
+  .badge-slate { background: var(--slate-100); color: var(--slate-600); }
+  .badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+  /* ── DARK MODE PREVIEW ── */
+  .dark-preview {
+    background: var(--slate-900);
+    border-radius: 16px;
+    padding: 40px;
+    margin-top: 32px;
+  }
+  .dark-preview h4 { font-family: var(--font-mono); font-size: 11px; color: var(--blue-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 24px; }
+  .dark-card { background: var(--slate-800); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 24px; }
+  .dark-card-title { font-family: var(--font-display); font-size: 22px; color: var(--white); margin-bottom: 8px; }
+  .dark-card-body { font-size: 14px; color: var(--slate-400); line-height: 1.7; margin-bottom: 20px; }
+
+  /* ── MOTION ── */
+  .motion-card { background: var(--white); border: 1px solid var(--slate-200); border-radius: 16px; padding: 28px; margin-bottom: 20px; }
+  .motion-row { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 16px; }
+  .motion-demo {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--blue-500), var(--teal-600));
+    border-radius: 10px;
+    cursor: pointer;
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition-duration: 0.35s;
+    transition-property: transform, box-shadow;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 18px;
+  }
+  .motion-demo:hover { transform: scale(1.1) translateY(-4px); box-shadow: 0 16px 32px rgba(37,99,235,0.3); }
+  .motion-label { font-family: var(--font-mono); font-size: 11px; color: var(--slate-400); margin-top: 8px; text-align: center; }
+  .motion-item { display: flex; flex-direction: column; align-items: center; }
+
+  /* ── DO / DON'T ── */
+  .dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .dd-card { border-radius: 12px; padding: 24px; }
+  .dd-do { background: #ECFDF5; border: 1px solid #A7F3D0; }
+  .dd-dont { background: #FEF2F2; border: 1px solid #FECACA; }
+  .dd-header { font-weight: 700; font-size: 14px; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+  .dd-do .dd-header { color: var(--success); }
+  .dd-dont .dd-header { color: var(--error); }
+  .dd-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .dd-list li { font-size: 14px; color: var(--slate-700); display: flex; align-items: flex-start; gap: 8px; line-height: 1.5; }
+  .dd-list li::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+  .dd-do .dd-list li::before { background: var(--success); }
+  .dd-dont .dd-list li::before { background: var(--error); }
+
+  /* ── ANIMATION ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .section { animation: fadeUp 0.5s ease both; }
+  .section:nth-child(2) { animation-delay: 0.05s; }
+  .section:nth-child(3) { animation-delay: 0.1s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 700px) {
+    .font-pair, .logo-grid, .ui-examples, .dd-grid, .semantic-grid { grid-template-columns: 1fr; }
+    .logo-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-tag"><span class="cover-dot"></span>Visual Identity System — v1.0</div>
+    <h1 class="cover-title">thechandraymurmu</h1>
+    <p class="cover-sub">Colors · Typography · Logo · Spacing · Components · Motion</p>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ── 1. COLOR PALETTE ── -->
+  <div class="section">
+    <div class="section-label">01 / Color</div>
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-desc">Cool-toned, friendly, and trustworthy. Blue builds confidence; teal adds warmth and creativity.</p>
+
+    <h3 style="font-size:15px;font-weight:600;color:var(--slate-700);margin-bottom:16px;">Primary — Blue Scale</h3>
+    <div class="color-row">
+      <div class="scale-chip" style="height:48px;background:var(--blue-900);border-radius:8px 0 0 8px;"><span style="color:rgba(255,255,255,0.5);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">900</span></div>
+      <div class="scale-chip" style="height:52px;background:var(--blue-800);"><span style="color:rgba(255,255,255,0.5);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">800</span></div>
+      <div class="scale-chip" style="height:60px;background:var(--blue-700);"><span style="color:rgba(255,255,255,0.6);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">700</span></div>
+      <div class="scale-chip" style="height:72px;background:var(--blue-600);"><span style="color:rgba(255,255,255,0.8);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">600 ★</span></div>
+      <div class="scale-chip" style="height:64px;background:var(--blue-500);"><span style="color:rgba(255,255,255,0.8);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">500</span></div>
+      <div class="scale-chip" style="height:52px;background:var(--blue-400);"><span style="color:rgba(255,255,255,0.7);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">400</span></div>
+      <div class="scale-chip" style="height:44px;background:var(--blue-200);"><span style="color:var(--blue-700);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">200</span></div>
+      <div class="scale-chip" style="height:40px;background:var(--blue-100);"><span style="color:var(--blue-700);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">100</span></div>
+      <div class="scale-chip" style="height:36px;background:var(--blue-50);border:1px solid var(--slate-200);border-radius:0 8px 8px 0;"><span style="color:var(--blue-600);font-family:var(--font-mono);font-size:10px;display:block;text-align:center;padding:4px 0">50</span></div>
+    </div>
+
+    <div class="color-grid" style="margin-bottom:32px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--blue-600);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Brand Blue</div>
+          <div class="swatch-hex">#2563EB · rgb(37,99,235)</div>
+          <div class="swatch-use">Primary CTAs, links, focus rings</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--blue-900);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Deep Navy</div>
+          <div class="swatch-hex">#0F1F3D · rgb(15,31,61)</div>
+          <div class="swatch-use">Headers, hero backgrounds</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--teal-600);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Accent Teal</div>
+          <div class="swatch-hex">#0D9488 · rgb(13,148,136)</div>
+          <div class="swatch-use">Open-source, highlights, success</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--blue-50);border:1px solid var(--slate-200);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Cloud White</div>
+          <div class="swatch-hex">#EFF6FF · rgb(239,246,255)</div>
+          <div class="swatch-use">Card backgrounds, section fills</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--slate-800);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Slate Dark</div>
+          <div class="swatch-hex">#1E293B · rgb(30,41,59)</div>
+          <div class="swatch-use">Body text, dark UI surfaces</div>
+        </div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--slate-50);border:1px solid var(--slate-200);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Off White</div>
+          <div class="swatch-hex">#F8FAFC · rgb(248,250,252)</div>
+          <div class="swatch-use">Page background, light mode</div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="font-size:15px;font-weight:600;color:var(--slate-700);margin-bottom:16px;">Semantic Colors</h3>
+    <div class="semantic-grid" style="margin-bottom:32px;">
+      <div class="semantic-chip" style="background:#ECFDF5;color:#065F46;">
+        <div class="label">Success</div>
+        #059669
+      </div>
+      <div class="semantic-chip" style="background:#FFFBEB;color:#92400E;">
+        <div class="label">Warning</div>
+        #D97706
+      </div>
+      <div class="semantic-chip" style="background:#FEF2F2;color:#991B1B;">
+        <div class="label">Error</div>
+        #DC2626
+      </div>
+      <div class="semantic-chip" style="background:#F0F9FF;color:#075985;">
+        <div class="label">Info</div>
+        #0EA5E9
+      </div>
+    </div>
+
+    <h3 style="font-size:15px;font-weight:600;color:var(--slate-700);margin-bottom:16px;">Usage Ratio — 60 / 30 / 10</h3>
+    <div class="ratio-bar">
+      <div class="ratio-segment" style="flex:60;background:var(--slate-50);color:var(--slate-500);border:1px solid var(--slate-200);border-radius:10px 0 0 10px;">
+        60% Neutral
+      </div>
+      <div class="ratio-segment" style="flex:30;background:var(--blue-600);border-radius:0;">
+        30% Blue
+      </div>
+      <div class="ratio-segment" style="flex:10;background:var(--teal-600);border-radius:0 10px 10px 0;">
+        10%
+      </div>
+    </div>
+    <div class="ratio-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:var(--slate-200);border:1px solid var(--slate-300);"></div>60% Neutral (backgrounds, text, space)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--blue-600);"></div>30% Brand Blue (UI, structure, CTAs)</div>
+      <div class="legend-item"><div class="legend-dot" style="background:var(--teal-600);"></div>10% Teal Accent (highlights, open-source, badges)</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 2. TYPOGRAPHY ── -->
+  <div class="section">
+    <div class="section-label">02 / Typography</div>
+    <h2 class="section-title">Type System</h2>
+    <p class="section-desc">A serif display font for warmth and character, paired with a modern geometric sans for clarity and readability.</p>
+
+    <div class="font-pair">
+      <div class="font-card">
+        <div class="font-card-label">Display / Headings</div>
+        <div class="font-card-name">DM Serif Display</div>
+        <div class="font-card-specimen" style="font-family:var(--font-display);font-size:42px;line-height:1.1;color:var(--slate-900);">
+          Building the web, one project at a time.
+        </div>
+        <div class="font-weights">
+          <div class="weight-row">
+            <span style="font-family:var(--font-display);font-size:18px;">Regular 400</span>
+            <span class="weight-label">Headings only</span>
+          </div>
+          <div class="weight-row">
+            <span style="font-family:var(--font-display);font-size:18px;font-style:italic;">Italic 400i</span>
+            <span class="weight-label">Emphasis / quotes</span>
+          </div>
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-card-label">Body / UI</div>
+        <div class="font-card-name">Plus Jakarta Sans</div>
+        <div class="font-card-specimen" style="font-family:var(--font-body);font-size:16px;line-height:1.7;color:var(--slate-700);">
+          Helping real people build a real online presence — with thoughtful design and reliable execution.
+        </div>
+        <div class="font-weights">
+          <div class="weight-row">
+            <span style="font-family:var(--font-body);font-weight:400;font-size:15px;">Regular 400</span>
+            <span class="weight-label">Body text</span>
+          </div>
+          <div class="weight-row">
+            <span style="font-family:var(--font-body);font-weight:500;font-size:15px;">Medium 500</span>
+            <span class="weight-label">Labels, nav</span>
+          </div>
+          <div class="weight-row">
+            <span style="font-family:var(--font-body);font-weight:600;font-size:15px;">SemiBold 600</span>
+            <span class="weight-label">Buttons, UI</span>
+          </div>
+          <div class="weight-row">
+            <span style="font-family:var(--font-body);font-weight:700;font-size:15px;">Bold 700</span>
+            <span class="weight-label">Strong emphasis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="font-card" style="margin-bottom:24px;">
+      <div class="font-card-label">Code / Mono</div>
+      <div class="font-card-name">JetBrains Mono — for code snippets, tags, and technical labels</div>
+      <div style="font-family:var(--font-mono);font-size:15px;color:var(--teal-600);background:var(--slate-50);padding:16px;border-radius:8px;line-height:1.8;">
+        const brand = "thechandraymurmu";<br>
+        // open · craft · reliable · curious
+      </div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-label">Type Scale</div>
+      <table class="type-scale-table">
+        <thead><tr><th>Name</th><th>Size</th><th>Weight</th><th>Line Height</th><th>Usage</th><th>Preview</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="type-name">Display</td>
+            <td class="type-meta">64px / 4rem</td>
+            <td class="type-meta">Serif 400</td>
+            <td class="type-meta">1.05</td>
+            <td class="type-meta">Hero section only</td>
+            <td><span style="font-family:var(--font-display);font-size:32px;color:var(--slate-900);">Hello.</span></td>
+          </tr>
+          <tr>
+            <td class="type-name">H1</td>
+            <td class="type-meta">48px / 3rem</td>
+            <td class="type-meta">Serif 400</td>
+            <td class="type-meta">1.1</td>
+            <td class="type-meta">Page titles</td>
+            <td><span style="font-family:var(--font-display);font-size:28px;color:var(--slate-900);">About Me</span></td>
+          </tr>
+          <tr>
+            <td class="type-name">H2</td>
+            <td class="type-meta">36px / 2.25rem</td>
+            <td class="type-meta">Serif 400</td>
+            <td class="type-meta">1.2</td>
+            <td class="type-meta">Section headings</td>
+            <td><span style="font-family:var(--font-display);font-size:22px;color:var(--slate-900);">My Services</span></td>
+          </tr>
+          <tr>
+            <td class="type-name">H3</td>
+            <td class="type-meta">24px / 1.5rem</td>
+            <td class="type-meta">Sans 700</td>
+            <td class="type-meta">1.3</td>
+            <td class="type-meta">Card titles</td>
+            <td><span style="font-family:var(--font-body);font-size:18px;font-weight:700;color:var(--slate-900);">Web Design</span></td>
+          </tr>
+          <tr>
+            <td class="type-name">H4</td>
+            <td class="type-meta">18px / 1.125rem</td>
+            <td class="type-meta">Sans 600</td>
+            <td class="type-meta">1.4</td>
+            <td class="type-meta">Sub-sections</td>
+            <td><span style="font-family:var(--font-body);font-size:16px;font-weight:600;color:var(--slate-900);">Features</span></td>
+          </tr>
+          <tr>
+            <td class="type-name">Body LG</td>
+            <td class="type-meta">18px / 1.125rem</td>
+            <td class="type-meta">Sans 400</td>
+            <td class="type-meta">1.7</td>
+            <td class="type-meta">Intros, hero copy</td>
+            <td><span style="font-family:var(--font-body);font-size:15px;color:var(--slate-700);">Let's build something real.</span></td>
+          </tr>
+          <tr>
+            <td class="type-name">Body</td>
+            <td class="type-meta">16px / 1rem</td>
+            <td class="type-meta">Sans 400</td>
+            <td class="type-meta">1.7</td>
+            <td class="type-meta">Paragraphs, descriptions</td>
+            <td><span style="font-family:var(--font-body);font-size:14px;color:var(--slate-600);">Standard paragraph text here.</span></td>
+          </tr>
+          <tr>
+            <td class="type-name">Caption</td>
+            <td class="type-meta">13px / 0.8125rem</td>
+            <td class="type-meta">Sans 400</td>
+            <td class="type-meta">1.5</td>
+            <td class="type-meta">Image captions, footnotes</td>
+            <td><span style="font-family:var(--font-body);font-size:12px;color:var(--slate-400);">Caption text</span></td>
+          </tr>
+          <tr>
+            <td class="type-name">Label</td>
+            <td class="type-meta">12px / 0.75rem</td>
+            <td class="type-meta">Mono 500</td>
+            <td class="type-meta">1.4</td>
+            <td class="type-meta">Tags, badges, eyebrows</td>
+            <td><span style="font-family:var(--font-mono);font-size:11px;color:var(--blue-600);text-transform:uppercase;letter-spacing:0.1em;">Open Source</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 3. LOGO ── -->
+  <div class="section">
+    <div class="section-label">03 / Logo</div>
+    <h2 class="section-title">Logo System</h2>
+    <p class="section-desc">Three concept directions — all rooted in the same friendly, technical identity. Choose one as primary and adapt the others as variants.</p>
+
+    <div class="logo-grid">
+      <div class="logo-card">
+        <div class="logo-preview" style="background:var(--blue-900);">
+          <div class="logo-wordmark">the<span>chandray</span>murmu</div>
+        </div>
+        <div class="logo-info">
+          <h4>Option A — Wordmark</h4>
+          <p>Full name as the mark. Accent color highlights the core "chandray" to create rhythm and recognition. Use for website headers and long-form contexts.</p>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-preview" style="background:linear-gradient(135deg,var(--blue-900),var(--slate-800));">
+          <div class="logo-combo">
+            <div class="logo-mark">C</div>
+            <div class="logo-text-stack">
+              <span class="logo-text-primary">chandraymurmu</span>
+              <span class="logo-text-secondary">dev · design · open source</span>
+            </div>
+          </div>
+        </div>
+        <div class="logo-info">
+          <h4>Option B — Combo Mark ★ Recommended</h4>
+          <p>Icon + wordmark. The gradient "C" mark is versatile for favicons, avatars, and app icons. Best for most use cases — marketing, social, website.</p>
+        </div>
+      </div>
+      <div class="logo-card">
+        <div class="logo-preview" style="background:var(--slate-50);">
+          <div class="logo-icon-only">C</div>
+        </div>
+        <div class="logo-info">
+          <h4>Option C — Icon Only</h4>
+          <p>Standalone mark for small contexts — favicon, GitHub avatar, social profile photo. Use only when the full name isn't needed.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="dd-grid" style="margin-top:8px;">
+      <div class="dd-card dd-do">
+        <div class="dd-header">✓ Logo Do's</div>
+        <ul class="dd-list">
+          <li>Use on brand-approved backgrounds (navy, white, light blue)</li>
+          <li>Maintain clear space of at least 1× the icon height on all sides</li>
+          <li>Use the teal accent consistently on the same letterform</li>
+        </ul>
+      </div>
+      <div class="dd-card dd-dont">
+        <div class="dd-header">✗ Logo Don'ts</div>
+        <ul class="dd-list">
+          <li>Don't stretch, rotate, or distort the logo</li>
+          <li>Don't place on busy photo backgrounds without an overlay</li>
+          <li>Don't change the font or use alternate typefaces for the wordmark</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 4. SPACING & LAYOUT ── -->
+  <div class="section">
+    <div class="section-label">04 / Spacing & Layout</div>
+    <h2 class="section-title">Spacing System</h2>
+    <p class="section-desc">Built on an 8px base unit. All spacing, padding, and layout values are multiples of 8 for perfect visual rhythm.</p>
+
+    <div class="spacing-row">
+      <div class="space-item"><div class="space-box" style="height:4px;width:32px;"></div><div class="space-label">4px<br>0.25rem<br>xs</div></div>
+      <div class="space-item"><div class="space-box" style="height:8px;width:40px;"></div><div class="space-label">8px<br>0.5rem<br>sm</div></div>
+      <div class="space-item"><div class="space-box" style="height:16px;width:48px;"></div><div class="space-label">16px<br>1rem<br>md</div></div>
+      <div class="space-item"><div class="space-box" style="height:24px;width:56px;"></div><div class="space-label">24px<br>1.5rem<br>lg</div></div>
+      <div class="space-item"><div class="space-box" style="height:32px;width:64px;"></div><div class="space-label">32px<br>2rem<br>xl</div></div>
+      <div class="space-item"><div class="space-box" style="height:48px;width:72px;"></div><div class="space-label">48px<br>3rem<br>2xl</div></div>
+      <div class="space-item"><div class="space-box" style="height:64px;width:80px;"></div><div class="space-label">64px<br>4rem<br>3xl</div></div>
+      <div class="space-item"><div class="space-box" style="height:96px;width:88px;"></div><div class="space-label">96px<br>6rem<br>4xl</div></div>
+    </div>
+
+    <h3 style="font-size:15px;font-weight:600;color:var(--slate-700);margin:24px 0 16px;">Border Radius</h3>
+    <div class="radius-row">
+      <div class="radius-item"><div class="radius-box" style="border-radius:4px;"></div><div class="radius-label">4px · sm<br>Inputs, tight UI</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:8px;"></div><div class="radius-label">8px · md<br>Buttons, tags</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:12px;"></div><div class="radius-label">12px · lg<br>Cards</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:16px;"></div><div class="radius-label">16px · xl<br>Panels, modals</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:24px;"></div><div class="radius-label">24px · 2xl<br>Hero sections</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:999px;height:32px;"></div><div class="radius-label">999px · pill<br>Badges, chips</div></div>
+    </div>
+
+    <h3 style="font-size:15px;font-weight:600;color:var(--slate-700);margin:24px 0 16px;">Elevation / Shadow</h3>
+    <div class="shadow-row">
+      <div class="shadow-item">
+        <div class="shadow-card" style="box-shadow:0 1px 2px rgba(0,0,0,0.06);"><span>xs</span></div>
+        <div class="shadow-label" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-400);margin-top:8px;">Subtle · Inputs</div>
+      </div>
+      <div class="shadow-item">
+        <div class="shadow-card" style="box-shadow:0 2px 8px rgba(0,0,0,0.08);"><span>sm</span></div>
+        <div class="shadow-label" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-400);margin-top:8px;">Cards · Hover</div>
+      </div>
+      <div class="shadow-item">
+        <div class="shadow-card" style="box-shadow:0 4px 16px rgba(0,0,0,0.10);"><span>md</span></div>
+        <div class="shadow-label" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-400);margin-top:8px;">Dropdowns</div>
+      </div>
+      <div class="shadow-item">
+        <div class="shadow-card" style="box-shadow:0 8px 32px rgba(0,0,0,0.12);"><span>lg</span></div>
+        <div class="shadow-label" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-400);margin-top:8px;">Modals · Sheets</div>
+      </div>
+      <div class="shadow-item">
+        <div class="shadow-card" style="box-shadow:0 0 0 3px rgba(59,130,246,0.25);"><span>focus</span></div>
+        <div class="shadow-label" style="font-family:var(--font-mono);font-size:11px;color:var(--slate-400);margin-top:8px;">Focus Ring · Blue</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 5. COMPONENTS ── -->
+  <div class="section">
+    <div class="section-label">05 / Components</div>
+    <h2 class="section-title">UI Components</h2>
+    <p class="section-desc">Ready-to-use component patterns consistent with the brand's friendly, clean aesthetic.</p>
+
+    <div class="ui-examples">
+      <div class="ui-card">
+        <h4>Buttons</h4>
+        <div class="btn-row">
+          <button class="btn btn-primary">Get Started →</button>
+          <button class="btn btn-secondary">View Projects</button>
+        </div>
+        <div class="btn-row">
+          <button class="btn btn-ghost">Learn More</button>
+          <button class="btn btn-success">✓ Shipped!</button>
+        </div>
+      </div>
+      <div class="ui-card">
+        <h4>Form Inputs</h4>
+        <label class="input-label">Your name</label>
+        <input class="input-demo" type="text" placeholder="e.g. Priya Sharma" />
+        <label class="input-label">Project idea</label>
+        <input class="input-demo" type="text" placeholder="Tell me what you're building..." />
+      </div>
+      <div class="ui-card">
+        <h4>Badges & Tags</h4>
+        <div class="badge-row" style="margin-bottom:12px;">
+          <span class="badge badge-blue">SaaS</span>
+          <span class="badge badge-teal">Open Source</span>
+          <span class="badge badge-slate">Freelance</span>
+        </div>
+        <div class="badge-row">
+          <span class="badge badge-blue">React</span>
+          <span class="badge badge-teal">Next.js</span>
+          <span class="badge badge-slate">Tailwind</span>
+          <span class="badge badge-blue">Node.js</span>
+        </div>
+      </div>
+      <div class="ui-card">
+        <h4>Project Card Pattern</h4>
+        <div style="border:1px solid var(--slate-200);border-radius:12px;overflow:hidden;">
+          <div style="height:6px;background:linear-gradient(90deg,var(--blue-600),var(--teal-600));"></div>
+          <div style="padding:20px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px;">
+              <span style="font-weight:700;font-size:15px;color:var(--slate-900);">chandray-forms</span>
+              <span class="badge badge-teal" style="font-size:11px;">Open Source</span>
+            </div>
+            <p style="font-size:13px;color:var(--slate-600);margin-bottom:14px;line-height:1.6;">A lightweight form builder for React apps with built-in validation.</p>
+            <div class="badge-row">
+              <span class="badge badge-slate">React</span>
+              <span class="badge badge-slate">TypeScript</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DARK MODE -->
+    <div class="dark-preview">
+      <h4>Dark Mode Preview</h4>
+      <div class="dark-card">
+        <div class="dark-card-title">Let's build something real.</div>
+        <div class="dark-card-body">I help startups, freelancers, and small businesses create an online presence that actually works. No templates. No shortcuts. Just thoughtful craft.</div>
+        <div style="display:flex;gap:12px;">
+          <button class="btn btn-primary">Start a Project</button>
+          <button class="btn" style="background:rgba(255,255,255,0.08);color:var(--blue-200);border:1.5px solid rgba(255,255,255,0.1);">See My Work</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── 6. MOTION ── -->
+  <div class="section">
+    <div class="section-label">06 / Motion</div>
+    <h2 class="section-title">Motion Principles</h2>
+    <p class="section-desc">Animations should feel natural and purposeful — never distracting. They confirm actions, guide attention, and add warmth.</p>
+
+    <div class="motion-card">
+      <strong style="font-size:15px;color:var(--slate-800);">Easing Curves</strong>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:16px;">
+        <div style="background:var(--blue-50);padding:16px;border-radius:10px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue-600);margin-bottom:6px;">Entrance</div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--slate-700);">cubic-bezier(0.34, 1.56, 0.64, 1)</div>
+          <div style="font-size:13px;color:var(--slate-600);margin-top:6px;">Slight spring — for elements entering the screen</div>
+        </div>
+        <div style="background:var(--blue-50);padding:16px;border-radius:10px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue-600);margin-bottom:6px;">Exit</div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--slate-700);">cubic-bezier(0.4, 0, 1, 1)</div>
+          <div style="font-size:13px;color:var(--slate-600);margin-top:6px;">Ease-in — quick and clean exits</div>
+        </div>
+        <div style="background:var(--blue-50);padding:16px;border-radius:10px;">
+          <div style="font-family:var(--font-mono);font-size:11px;color:var(--blue-600);margin-bottom:6px;">Interaction</div>
+          <div style="font-family:var(--font-mono);font-size:12px;color:var(--slate-700);">cubic-bezier(0.4, 0, 0.2, 1)</div>
+          <div style="font-size:13px;color:var(--slate-600);margin-top:6px;">Ease-in-out — hover, focus, UI transitions</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="motion-card">
+      <strong style="font-size:15px;color:var(--slate-800);">Duration Scale</strong>
+      <div style="display:flex;gap:12px;margin-top:16px;flex-wrap:wrap;">
+        <div style="background:var(--slate-50);border:1px solid var(--slate-200);padding:12px 20px;border-radius:8px;font-family:var(--font-mono);font-size:13px;color:var(--slate-700);">100ms · micro (hover)</div>
+        <div style="background:var(--slate-50);border:1px solid var(--slate-200);padding:12px 20px;border-radius:8px;font-family:var(--font-mono);font-size:13px;color:var(--slate-700);">200ms · fast (button states)</div>
+        <div style="background:var(--blue-50);border:1px solid var(--blue-200);padding:12px 20px;border-radius:8px;font-family:var(--font-mono);font-size:13px;color:var(--blue-700);">350ms · standard ★ (modals, reveals)</div>
+        <div style="background:var(--slate-50);border:1px solid var(--slate-200);padding:12px 20px;border-radius:8px;font-family:var(--font-mono);font-size:13px;color:var(--slate-700);">500ms · slow (page transitions)</div>
+      </div>
+    </div>
+
+    <div class="motion-card">
+      <strong style="font-size:15px;color:var(--slate-800);">Hover Demo — try hovering these</strong>
+      <div class="motion-row">
+        <div class="motion-item">
+          <div class="motion-demo">✦</div>
+          <div class="motion-label">Scale + lift</div>
+        </div>
+        <div class="motion-item">
+          <div class="motion-demo" style="background:linear-gradient(135deg,var(--teal-600),var(--blue-600));">⬡</div>
+          <div class="motion-label">Card hover</div>
+        </div>
+        <div class="motion-item">
+          <div class="motion-demo" style="background:var(--blue-900);">→</div>
+          <div class="motion-label">CTA lift</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ── DO / DON'T ── -->
+  <div class="section">
+    <div class="section-label">07 / Rules</div>
+    <h2 class="section-title">Brand Do's & Don'ts</h2>
+    <p class="section-desc">Three rules in each direction to keep the brand consistent across every touchpoint.</p>
+
+    <div class="dd-grid">
+      <div class="dd-card dd-do">
+        <div class="dd-header">✓ Always Do</div>
+        <ul class="dd-list">
+          <li>Lead with the human — write to one person, not a crowd. Use "you" and "I", not "clients" and "users".</li>
+          <li>Use white space generously. The brand breathes. Don't cram content.</li>
+          <li>Apply the gradient accent (blue → teal) to meaningful moments — the logo mark, a key CTA, an open-source tag. Not everywhere.</li>
+          <li>Keep tech readable. If you use a technical term, follow it with a plain-language explanation.</li>
+          <li>Maintain the serif/sans pairing. DM Serif for feeling. Jakarta Sans for clarity. Always both.</li>
+        </ul>
+      </div>
+      <div class="dd-card dd-dont">
+        <div class="dd-header">✗ Never Do</div>
+        <ul class="dd-list">
+          <li>Don't use more than 2 brand colors in a single small UI element. Restraint is the point.</li>
+          <li>Don't use agency-speak — "synergy", "leverage", "scalable solutions". This brand is a person, not a firm.</li>
+          <li>Don't put dark text on the dark navy background without sufficient contrast (minimum WCAG AA: 4.5:1).</li>
+          <li>Don't mix the logo wordmark with a different typeface, even "just for a post."</li>
+          <li>Don't use the full color palette on social graphics — pick 2 colors max per post for visual consistency.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:48px 0 0;border-top:1px solid var(--slate-200);">
+    <div style="font-family:var(--font-display);font-size:28px;color:var(--blue-600);margin-bottom:8px;">thechandraymurmu</div>
+    <div style="font-family:var(--font-mono);font-size:12px;color:var(--slate-400);letter-spacing:0.1em;">VISUAL IDENTITY SYSTEM · v1.0 · 2026</div>
+  </div>
+
+</div>
+</body>
+</html>

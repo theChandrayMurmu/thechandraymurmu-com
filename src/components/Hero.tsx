@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { BackgroundLines } from "./ui/BackgroundLines";
-import { Users, Briefcase } from "lucide-react";
 
 function getISTMidnightDate(year: number, month: number, day: number) {
   // month is 0-indexed
@@ -110,25 +109,23 @@ const Hero = () => {
         <div className="relative z-10 flex flex-col justify-center items-center text-center text-white px-4 sm:px-6 lg:px-8 w-full">
           <div className="flex flex-col justify-center items-center w-full">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg text-center text-gray-900 select-none w-full">
-              Building Team<br />Building Community
+              Your idea deserves a real home online.
             </h1>
             <p className="text-lg md:text-xl text-black max-w-3xl mx-auto drop-shadow-lg text-center">
-              Sharing my knowledge with world and learning to find my voice.
+              I build websites and digital products for startups, freelancers, and small businesses who are ready to show up online — without the agency price tag or the copy-paste template.
             </p>
             <div className="mt-6 flex flex-col sm:flex-row gap-4 justify-center items-center">
               <a
-                href="#community"
+                href="#contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition-colors text-base"
               >
-                <Users size={20} />
-                Join Community
+                Start a project &rarr;
               </a>
               <a
-                href="#hire"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-gray-900 text-white font-semibold shadow hover:bg-gray-800 transition-colors text-base"
+                href="#projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border-2 border-blue-400 text-blue-600 font-semibold shadow hover:bg-blue-50 transition-colors text-base bg-transparent"
               >
-                <Briefcase size={20} />
-                Hire Me
+                See my work
               </a>
             </div>
           </div>
